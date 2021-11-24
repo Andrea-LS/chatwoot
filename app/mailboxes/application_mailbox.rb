@@ -3,7 +3,7 @@ class ApplicationMailbox < ActionMailbox::Base
 
   # Last part is the regex for the UUID
   # Eg: email should be something like : reply+6bdc3f4d-0bec-4515-a284-5d916fdde489@domain.com
-  REPLY_EMAIL_UUID_PATTERN = /^reply\+([0-9a-f]{8}\b-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-\b[0-9a-f]{12})$/i
+  REPLY_EMAIL_UUID_PATTERN = /reply\+([0-9a-f]{8}\b-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-\b[0-9a-f]{12})$/i
   CONVERSATION_MESSAGE_ID_PATTERN = %r{conversation/([a-zA-Z0-9\-]*?)/messages/(\d+?)@(\w+\.\w+)}
 
   def self.reply_mail?
@@ -55,7 +55,7 @@ class ApplicationMailbox < ActionMailbox::Base
   def in_reply_to_matches?(in_reply_to)
     if in_reply_to.is_a?(Array)
       in_reply_to.each do |in_reply_to_mail|
-        in_reply_to_match = in_reply_to_mail.match(CONVERSATION_MESSAGE_ID_PATTERN)
+        in_reply_to_match ||= in_reply_to_mail.match(CONVERSATION_MESSAGE_ID_PATTERN)
       end
     else
       in_reply_to_match = in_reply_to.match(CONVERSATION_MESSAGE_ID_PATTERN)
