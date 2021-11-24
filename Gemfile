@@ -8,6 +8,11 @@ gem 'rails'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', require: false
 
+##--error prevention on Enscale gems --##
+gem 'flay'
+gem 'rspec'
+gem 'sqlite3'
+
 ##-- rails application helper gems --##
 gem 'acts-as-taggable-on'
 gem 'attr_extras'
