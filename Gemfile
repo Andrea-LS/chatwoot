@@ -9,8 +9,7 @@ gem 'rails'
 gem 'bootsnap', require: false
 
 ##--error prevention on Enscale gems --##
-gem 'flay'
-gem 'rspec'
+
 gem 'sqlite3'
 
 ##-- rails application helper gems --##
